@@ -53,6 +53,11 @@ namespace DrugStoreSystem
         {
             LoadData();
         }
+
+        private void FormUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
     
 }
