@@ -1,0 +1,15 @@
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\bin\Debug\DrugStoreSystem.exe.config
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\bin\Debug\DrugStoreSystem.exe
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\bin\Debug\DrugStoreSystem.pdb
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.csprojAssemblyReference.cache
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.Form1.resources
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.Properties.Resources.resources
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.csproj.GenerateResource.cache
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.csproj.CoreCompileInputs.cache
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.exe
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.pdb
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\bin\Debug\DrugStoreSystem.mdf
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\bin\Debug\DrugStoreSystem_log.ldf
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.FormAdmin.resources
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.FormUser.resources
+C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\obj\Debug\DrugStoreSystem.FormMain.resources
