@@ -75,16 +75,19 @@
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "Id";
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "Name";
             this.Column2.HeaderText = "Назва";
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "Amount";
             this.Column3.HeaderText = "Кількість";
             this.Column3.Name = "Column3";
             // 
@@ -166,6 +169,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "GetAll";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -219,20 +223,20 @@
             this.InfoToolStripMenuItem1,
             this.ExitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.menuToolStripMenuItem.Text = "Меню";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // InfoToolStripMenuItem1
             // 
             this.InfoToolStripMenuItem1.Name = "InfoToolStripMenuItem1";
-            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.InfoToolStripMenuItem1.Text = "Справка";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.ExitToolStripMenuItem.Text = "Вихід";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.вихідToolStripMenuItem_Click);
             // 
@@ -257,6 +261,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormUser";
             this.Text = "FormUser";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormUser_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -277,6 +282,10 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -286,9 +295,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
     }
 }

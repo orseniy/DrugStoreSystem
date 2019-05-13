@@ -5,44 +5,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data;
+using DrugStoreSystem.Models;
 
 namespace DrugStoreSystem
 {
     public class DbAccess
 
     {
-        
+        private SqlDataReader dataReader;
+        private SqlCommand sqlCommand;
+        private SqlConnection connection;
+        private List<Drug> drugs = new List<Drug>();
+        public ConnectionState ConnectionState => connection.State;
 
+        public List<Drug> Drugs  => drugs;
 
         public DbAccess()
         {
-        }
-        SqlDataReader dataReader;
-        SqlCommand sqlCommand;
-        SqlConnection connection;
-        private object listBox1 = null;
-        public void Open()
-        {
-            connection.Open();
-        }
-
-        public void Connection()
-
-        {
-            SqlConnection connection;
-            string adress = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\DrugStoreSystem.mdf;Integrated Security=Trueystem\DrugStoreSystem\DrugStoreSystem.mdf;Integrated Security=True";
+            string adress = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|DrugStoreSystem.mdf;Integrated Security=True";
             connection = new SqlConnection(adress);
-            connection.Open();
-
-
+       }
+        public void OpenConnection()
+        {
+            if(ConnectionState == ConnectionState.Closed)
+                connection.Open();
         }
 
-        
+        public void CloseConnection()
+        {
+            if (ConnectionState != ConnectionState.Closed)
+                connection.Close();
+        }
+
 
         public void DataLoad()
         {
             dataReader = null;
-            Connection();
+            OpenConnection();
             sqlCommand = new SqlCommand("SELECT * FROM [Drugs]", connection);
 
             try
@@ -50,7 +50,13 @@ namespace DrugStoreSystem
                 dataReader = sqlCommand.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    listBox1.Items.Add(Convert.ToString(dataReader["ID"]) + "   " + Convert.ToString(dataReader["Назва"]) + "   " + Convert.ToString(dataReader["Кількість"]) + "   " + Convert.ToString(dataReader["Штрихкод"]) + "   " + Convert.ToString(dataReader["Виробник"]) + "   " + Convert.ToString(dataReader["АТХ група"]) + "   " + Convert.ToString(dataReader["Фарм. Група"]) + "   " + Convert.ToString(dataReader["Форма"]) + "   " + Convert.ToString(dataReader["Місце зберігання"]));
+                    drugs.Add(new Drug
+                    {
+                        Id = Convert.ToInt32(dataReader["ID"]),
+                        Name = Convert.ToString(dataReader["Назва"]),
+                        Amount = Convert.ToInt32(dataReader["Кількість"])
+                        //Convert.ToString(dataReader["Штрихкод"]) + "   " + Convert.ToString(dataReader["Виробник"]) + "   " + Convert.ToString(dataReader["АТХ група"]) + "   " + Convert.ToString(dataReader["Фарм. Група"]) + "   " + Convert.ToString(dataReader["Форма"]) + "   " + Convert.ToString(dataReader["Місце зберігання"]));
+                    });
                 }
 
 

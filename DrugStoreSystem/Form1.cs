@@ -15,7 +15,7 @@ namespace DrugStoreSystem
     public partial class Form1 : Form
     {
         private const string access = @"admin";
-        private const string connaccess = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Арсений\source\repos\DrugStoreSystem\DrugStoreSystem\DrugStoreSystem.mdf;Integrated Security=Trueystem\DrugStoreSystem\DrugStoreSystem.mdf;Integrated Security=True";
+        private const string connaccess = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|DrugStoreSystem.mdf;Integrated Security=True";
 
 
         public Form1()
@@ -41,9 +41,7 @@ namespace DrugStoreSystem
                     {
                         reader.Read();
 
-#pragma warning disable CS0252 // Possible unintended reference comparison; left hand side needs cast
                         if (reader.GetValue(3).ToString() == "admin")
-#pragma warning restore CS0252 // Possible unintended reference comparison; left hand side needs cast
                         {
                             MessageBox.Show("OK");
                             FormAdmin objFormAdmin = new FormAdmin();
@@ -60,13 +58,13 @@ namespace DrugStoreSystem
                     }
                     else
                     {
-                        MessageBox.Show("Неправильні логін та пароль");
+                        MessageBox.Show(this, "Неправильні логін та пароль");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Помилка");
+                MessageBox.Show(this, "Помилка");
             }
             finally
             {

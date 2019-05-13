@@ -16,17 +16,20 @@ namespace DrugStoreSystem
     {
 
         private readonly DbAccess _connection;
-        private readonly DbAccess _Open;
+        //private readonly DbAccess _Open;
         public FormUser()
         {
             InitializeComponent();
             _connection = new DbAccess();
-            _connection.Connection();
-            _connection.Open();
+            //_connection.Connection();
+            _connection.OpenConnection();
         }
         public void LoadData()
         {
-            
+            _connection.DataLoad();
+            dataGridView1.DataSource = _connection.Drugs;
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,10 +43,20 @@ namespace DrugStoreSystem
         }
         private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_connection != null && _connection.State != ConnectionState.Closed)
+            if (_connection != null && _connection.ConnectionState != ConnectionState.Closed)
             {
-                _connection.Close();
+                _connection.CloseConnection();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void FormUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
     
