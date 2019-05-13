@@ -12,5 +12,11 @@ namespace DrugStoreSystem.Models
         public string Name { get; set; }
 
         public int Amount { get; set; }
+        public string Code { get; set; }
+        public string Manufacturer { get; set; }
+        public string ATX { get; set; }
+        public string PharmGroup { get; set; }
+        public string Form { get; set; }
+        public string Storehouse { get; set; }
     }
 }

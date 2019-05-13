@@ -54,8 +54,13 @@ namespace DrugStoreSystem
                     {
                         Id = Convert.ToInt32(dataReader["ID"]),
                         Name = Convert.ToString(dataReader["Назва"]),
-                        Amount = Convert.ToInt32(dataReader["Кількість"])
-                        //Convert.ToString(dataReader["Штрихкод"]) + "   " + Convert.ToString(dataReader["Виробник"]) + "   " + Convert.ToString(dataReader["АТХ група"]) + "   " + Convert.ToString(dataReader["Фарм. Група"]) + "   " + Convert.ToString(dataReader["Форма"]) + "   " + Convert.ToString(dataReader["Місце зберігання"]));
+                        Amount = Convert.ToInt32(dataReader["Кількість"]),
+                        Code = Convert.ToString(dataReader["Штрихкод"]),
+                        Manufacturer = Convert.ToString(dataReader["Виробник"]),
+                        ATX = Convert.ToString(dataReader["АТХ група"]),
+                        PharmGroup = Convert.ToString(dataReader["Фарм. Група"]),
+                        Form = Convert.ToString(dataReader["Форма"]),
+                        Storehouse =Convert.ToString(dataReader["Місце зберігання"]),
                     });
                 }
 

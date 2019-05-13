@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +52,12 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drugStoreSystemDataSet = new DrugStoreSystem.DrugStoreSystemDataSet();
+            this.drugStoreSystemDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.drugStoreSystemDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drugStoreSystemDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -223,22 +228,32 @@
             this.InfoToolStripMenuItem1,
             this.ExitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.menuToolStripMenuItem.Text = "Меню";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // InfoToolStripMenuItem1
             // 
             this.InfoToolStripMenuItem1.Name = "InfoToolStripMenuItem1";
-            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.InfoToolStripMenuItem1.Text = "Справка";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.ExitToolStripMenuItem.Text = "Вихід";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.вихідToolStripMenuItem_Click);
+            // 
+            // drugStoreSystemDataSet
+            // 
+            this.drugStoreSystemDataSet.DataSetName = "DrugStoreSystemDataSet";
+            this.drugStoreSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // drugStoreSystemDataSetBindingSource
+            // 
+            this.drugStoreSystemDataSetBindingSource.DataSource = this.drugStoreSystemDataSet;
+            this.drugStoreSystemDataSetBindingSource.Position = 0;
             // 
             // FormUser
             // 
@@ -265,6 +280,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.drugStoreSystemDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drugStoreSystemDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +312,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private DrugStoreSystemDataSet drugStoreSystemDataSet;
+        private System.Windows.Forms.BindingSource drugStoreSystemDataSetBindingSource;
     }
 }
