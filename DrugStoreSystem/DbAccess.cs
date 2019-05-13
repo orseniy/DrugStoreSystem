@@ -43,6 +43,7 @@ namespace DrugStoreSystem
         {
             dataReader = null;
             OpenConnection();
+            drugs.Clear();
             sqlCommand = new SqlCommand("SELECT * FROM [Drugs]", connection);
 
             try
@@ -76,11 +77,16 @@ namespace DrugStoreSystem
                     dataReader.Close();
             }
         }
-        ///<summary>
 
-        ///</summary>
-        /// <returns> LOGS </returns>
-       // public List <DbItem> GetAll()
+        /// <summary>
+        /// Create new record
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>new record with generated id</returns>
+        public Drug Insert(Drug item)
+        {
+            throw new NotImplementedException();
+        }
         
 
         
