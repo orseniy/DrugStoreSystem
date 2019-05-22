@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DrugStoreSystem.Models;
 
 namespace DrugStoreSystem
 {
     public partial class FormUser : Form
-    
+
     {
 
         private readonly DbAccess _connection;
@@ -27,29 +28,20 @@ namespace DrugStoreSystem
         public void LoadData()
         {
             _connection.DataLoad();
-            dataGridView1.DataSource = _connection.Drugs;
-
+            drugsGridView.AutoGenerateColumns = false;
+            drugsGridView.DataSource = null;
+            drugsGridView.DataSource = _connection.Drugs;
+            drugsGridView.Update();
+            drugsGridView.Refresh();
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            searchTextBox.Text = "";
         }
 
-        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (_connection != null && _connection.ConnectionState != ConnectionState.Closed)
-            {
-                _connection.CloseConnection();
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -58,6 +50,62 @@ namespace DrugStoreSystem
         {
             Application.Exit();
         }
+
+
+        private void FormUser_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (drugsGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = drugsGridView.SelectedRows[0];
+                Drug selectedItem = (Drug)selectedRow.DataBoundItem;
+                DrugForm InsertForm = new DrugForm(selectedItem);
+                InsertForm.ShowDialog(this);
+                LoadData();
+
+            }
+        }
+
+        private void ExitMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            DrugForm InsertForm = new DrugForm();
+            InsertForm.ShowDialog(this);
+            LoadData();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (drugsGridView.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show(this, "Видалити рядок?", "Видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DataGridViewRow selectedRow = drugsGridView.SelectedRows[0];
+                    Drug selectedItem = (Drug)selectedRow.DataBoundItem;
+                    if (selectedItem != null)
+                    {
+                        _connection.Delete(selectedItem.Id);
+                        LoadData();
+                    }
+                }
+
+            }
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            _connection.Filter(searchTextBox.Text);
+            drugsGridView.DataSource = null;
+            drugsGridView.DataSource = _connection.Drugs;
+        }
     }
-    
 }

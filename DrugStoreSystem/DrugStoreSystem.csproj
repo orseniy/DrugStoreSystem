@@ -67,11 +67,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DrugStoreSystemDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
@@ -85,23 +85,23 @@
     <Compile Include="FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="INSERT.cs">
+    <Compile Include="DrugForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="INSERT.Designer.cs">
-      <DependentUpon>INSERT.cs</DependentUpon>
+    <Compile Include="DrugForm.Designer.cs">
+      <DependentUpon>DrugForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Drug.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUser.resx">
       <DependentUpon>FormUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="INSERT.resx">
-      <DependentUpon>INSERT.cs</DependentUpon>
+    <EmbeddedResource Include="DrugForm.resx">
+      <DependentUpon>DrugForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,10 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DrugStoreSystem.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DrugStoreSystem_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>DrugStoreSystem.mdf</DependentUpon>
     </Content>
   </ItemGroup>

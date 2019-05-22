@@ -14,21 +14,20 @@ namespace DrugStoreSystem
 
     {
         private SqlDataReader dataReader;
-        private SqlCommand sqlCommand;
         private SqlConnection connection;
         private List<Drug> drugs = new List<Drug>();
         public ConnectionState ConnectionState => connection.State;
 
-        public List<Drug> Drugs  => drugs;
+        public List<Drug> Drugs => drugs;
 
         public DbAccess()
         {
             string adress = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|DrugStoreSystem.mdf;Integrated Security=True";
             connection = new SqlConnection(adress);
-       }
+        }
         public void OpenConnection()
         {
-            if(ConnectionState == ConnectionState.Closed)
+            if (ConnectionState == ConnectionState.Closed)
                 connection.Open();
         }
 
@@ -44,7 +43,7 @@ namespace DrugStoreSystem
             dataReader = null;
             OpenConnection();
             drugs.Clear();
-            sqlCommand = new SqlCommand("SELECT * FROM [Drugs]", connection);
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [Drugs]", connection);
 
             try
             {
@@ -54,14 +53,15 @@ namespace DrugStoreSystem
                     drugs.Add(new Drug
                     {
                         Id = Convert.ToInt32(dataReader["ID"]),
-                        Name = Convert.ToString(dataReader["Назва"]),
-                        Amount = Convert.ToInt32(dataReader["Кількість"]),
-                        Code = Convert.ToString(dataReader["Штрихкод"]),
-                        Manufacturer = Convert.ToString(dataReader["Виробник"]),
-                        ATX = Convert.ToString(dataReader["АТХ група"]),
-                        PharmGroup = Convert.ToString(dataReader["Фарм. Група"]),
-                        Form = Convert.ToString(dataReader["Форма"]),
-                        Storehouse =Convert.ToString(dataReader["Місце зберігання"]),
+                        Name = Convert.ToString(dataReader["Name"]),
+                        Price = Convert.ToDecimal(dataReader["Price"]),
+                        Amount = Convert.ToInt32(dataReader["Amount"]),
+                        Code = Convert.ToString(dataReader["Code"]),
+                        Manufacturer = Convert.ToString(dataReader["Manufacturer"]),
+                        ATX = Convert.ToString(dataReader["ATX"]),
+                        PharmGroup = Convert.ToString(dataReader["PharmGroup"]),
+                        Form = Convert.ToString(dataReader["Form"]),
+                        Storehouse = Convert.ToString(dataReader["Storehouse"]),
                     });
                 }
 
@@ -75,8 +75,55 @@ namespace DrugStoreSystem
             {
                 if (dataReader != null)
                     dataReader.Close();
+                CloseConnection();
             }
         }
+
+        public Drug GetById(int id)
+        {
+            OpenConnection();
+            drugs.Clear();
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM [Drugs] where id=@id", connection))
+            {
+                cmd.Parameters.AddWithValue("@id",id);
+                try
+                {
+                    dataReader = cmd.ExecuteReader();
+                    if (dataReader.Read())
+                    {
+                        Drug res = new Drug
+                        {
+                            Id = Convert.ToInt32(dataReader["ID"]),
+                            Name = Convert.ToString(dataReader["Name"]),
+                            Price = Convert.ToDecimal(dataReader["Price"]),
+                            Amount = Convert.ToInt32(dataReader["Amount"]),
+                            Code = Convert.ToString(dataReader["Code"]),
+                            Manufacturer = Convert.ToString(dataReader["Manufacturer"]),
+                            ATX = Convert.ToString(dataReader["ATX"]),
+                            PharmGroup = Convert.ToString(dataReader["PharmGroup"]),
+                            Form = Convert.ToString(dataReader["Form"]),
+                            Storehouse = Convert.ToString(dataReader["Storehouse"]),
+                        };
+                        return res;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (dataReader != null)
+                        dataReader.Close();
+                    CloseConnection();
+                }
+            }
+            //Not found
+            return null;
+
+        }
+
 
         /// <summary>
         /// Create new record
@@ -85,11 +132,111 @@ namespace DrugStoreSystem
         /// <returns>new record with generated id</returns>
         public Drug Insert(Drug item)
         {
-            throw new NotImplementedException();
-        }
-        
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO Drugs(Name,Price,Amount,Code,Manufacturer,[ATX],[PharmGroup],Form,[Storehouse]) output INSERTED.ID VALUES(@Name,@Price,@Amount,@Code,@Manufacturer,@ATX,@PharmGroup,@Form,@Storehouse)", connection))
+            {
+                cmd.Parameters.AddWithValue("@Name", item.Name);
+                cmd.Parameters.AddWithValue("@Price", item.Price);
+                cmd.Parameters.AddWithValue("@Amount", item.Amount);
+                cmd.Parameters.AddWithValue("@Code", item.Code);
+                cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
+                cmd.Parameters.AddWithValue("@ATX", item.ATX);
+                cmd.Parameters.AddWithValue("@PharmGroup", item.PharmGroup);
+                cmd.Parameters.AddWithValue("@Form", item.Form);
+                cmd.Parameters.AddWithValue("@Storehouse", item.Storehouse);
+                OpenConnection();
 
-        
+                int modified = (int)cmd.ExecuteScalar();
+                item.Id = modified;
+                CloseConnection();
+                DataLoad();
+
+                return item;
+            }
+        }
+
+        /// <summary>
+        /// Updates the existing item in the DB
+        /// </summary>
+        /// <param name="item">item to update</param>
+        public void Update(Drug item)
+        {
+            using (SqlCommand cmd = new SqlCommand("Update Drugs set Name=@Name,Price=@Price,Amount=@Amount,Code=@Code,Manufacturer=@Manufacturer,[ATX]=@ATX,[PharmGroup]=@PharmGroup,Form=@Form,[Storehouse]=@Storehouse where id=@id", connection))
+            {
+                cmd.Parameters.AddWithValue("@Name", item.Name);
+                cmd.Parameters.AddWithValue("@Amount", item.Amount);
+                cmd.Parameters.AddWithValue("@Price", item.Price);
+                cmd.Parameters.AddWithValue("@Code", item.Code);
+                cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
+                cmd.Parameters.AddWithValue("@ATX", item.ATX);
+                cmd.Parameters.AddWithValue("@PharmGroup", item.PharmGroup);
+                cmd.Parameters.AddWithValue("@Form", item.Form);
+                cmd.Parameters.AddWithValue("@Storehouse", item.Storehouse);
+                cmd.Parameters.AddWithValue("@id", item.Id);
+                OpenConnection();
+
+                cmd.ExecuteScalar();
+                CloseConnection();
+                DataLoad();
+
+            }
+
+        }
+
+        public void Delete(int id)
+        {
+            using (SqlCommand cmd = new SqlCommand("delete from Drugs where Id=@Id", connection))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                OpenConnection();
+
+                cmd.ExecuteScalar();
+                CloseConnection();
+                DataLoad();
+
+            }
+        }
+
+        public void Filter(string text)
+        {
+            drugs.Clear();
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM [Drugs] where [Name] Like @filter OR [Code] Like @filter OR [Manufacturer] Like @filter", connection))
+            {
+                cmd.Parameters.AddWithValue("@filter", $"%{text}%");
+                OpenConnection();
+                try
+                {
+                    dataReader = cmd.ExecuteReader();
+                    drugs.Clear();
+                    while (dataReader.Read())
+                    {
+                        drugs.Add(new Drug
+                        {
+                            Id = Convert.ToInt32(dataReader["ID"]),
+                            Name = Convert.ToString(dataReader["Name"]),
+                            Price = Convert.ToDecimal(dataReader["Price"]),
+                            Amount = Convert.ToInt32(dataReader["Amount"]),
+                            Code = Convert.ToString(dataReader["Code"]),
+                            Manufacturer = Convert.ToString(dataReader["Manufacturer"]),
+                            ATX = Convert.ToString(dataReader["ATX"]),
+                            PharmGroup = Convert.ToString(dataReader["PharmGroup"]),
+                            Form = Convert.ToString(dataReader["Form"]),
+                            Storehouse = Convert.ToString(dataReader["Storehouse"]),
+                        });
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (dataReader != null)
+                        dataReader.Close();
+                    CloseConnection();
+                }
+            }
+        }
     }
 
 }
