@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using DrugStoreSystem.Models;
+using System.Diagnostics;
 
 namespace DrugStoreSystem
 {
@@ -48,7 +49,13 @@ namespace DrugStoreSystem
 
         private void FormUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            // Display a MsgBox asking the user to close the form.
+            if (MessageBox.Show("Ви впевнені, що бажаєте вийти?", "Закрити програму",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                // Cancel the Closing event
+                e.Cancel = true;
+            }
         }
 
 
@@ -64,6 +71,7 @@ namespace DrugStoreSystem
                 DataGridViewRow selectedRow = drugsGridView.SelectedRows[0];
                 Drug selectedItem = (Drug)selectedRow.DataBoundItem;
                 DrugForm InsertForm = new DrugForm(selectedItem);
+                InsertForm.label10.Text = "Змінити";
                 InsertForm.ShowDialog(this);
                 LoadData();
 
@@ -72,7 +80,7 @@ namespace DrugStoreSystem
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void Button6_Click(object sender, EventArgs e)
@@ -106,6 +114,11 @@ namespace DrugStoreSystem
             _connection.Filter(searchTextBox.Text);
             drugsGridView.DataSource = null;
             drugsGridView.DataSource = _connection.Drugs;
+        }
+
+        private void InfoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe", @"C:\\Users\\Арсений\\source\\repos\\DrugStoreSystem\\Info.txt");
         }
     }
 }

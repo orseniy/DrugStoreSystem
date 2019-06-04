@@ -221,9 +221,15 @@
             // amountUpDown
             // 
             this.amountUpDown.Location = new System.Drawing.Point(185, 78);
+            this.amountUpDown.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.amountUpDown.Name = "amountUpDown";
-            this.amountUpDown.Size = new System.Drawing.Size(67, 20);
+            this.amountUpDown.Size = new System.Drawing.Size(109, 20);
             this.amountUpDown.TabIndex = 1;
+            this.amountUpDown.ThousandsSeparator = true;
             this.amountUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -283,7 +289,7 @@
         private System.Windows.Forms.TextBox storehouseTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown amountUpDown;
     }
 }

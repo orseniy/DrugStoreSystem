@@ -235,13 +235,14 @@
             // InfoToolStripMenuItem1
             // 
             this.InfoToolStripMenuItem1.Name = "InfoToolStripMenuItem1";
-            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.InfoToolStripMenuItem1.Text = "Справка";
+            this.InfoToolStripMenuItem1.Click += new System.EventHandler(this.InfoToolStripMenuItem1_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "Вихід";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 

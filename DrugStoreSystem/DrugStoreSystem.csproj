@@ -113,6 +113,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DrugStoreSystemDataSet.xsc">
       <DependentUpon>DrugStoreSystemDataSet.xsd</DependentUpon>
     </None>

@@ -199,7 +199,7 @@ namespace DrugStoreSystem
         public void Filter(string text)
         {
             drugs.Clear();
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM [Drugs] where [Name] Like @filter OR [Code] Like @filter OR [Manufacturer] Like @filter", connection))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM [Drugs] where [Name] Like @filter OR [Code] Like @filter OR [Manufacturer] Like @filter OR [Form] Like @filter OR [PharmGroup] Like @filter OR [Storehouse] Like @filter", connection))
             {
                 cmd.Parameters.AddWithValue("@filter", $"%{text}%");
                 OpenConnection();
