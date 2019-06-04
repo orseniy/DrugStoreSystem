@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.drugsGridView = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,9 +93,9 @@
             // PriceColumn
             // 
             this.PriceColumn.DataPropertyName = "Price";
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.PriceColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.PriceColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.PriceColumn.HeaderText = "Ціна";
             this.PriceColumn.Name = "PriceColumn";
             this.PriceColumn.ReadOnly = true;
@@ -190,6 +190,7 @@
             this.button5.TabIndex = 3;
             this.button5.Text = "Delete";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
@@ -200,6 +201,7 @@
             this.button6.TabIndex = 2;
             this.button6.Text = "Додати";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // button7
@@ -227,19 +229,20 @@
             this.InfoToolStripMenuItem1,
             this.ExitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.menuToolStripMenuItem.Text = "Меню";
             // 
             // InfoToolStripMenuItem1
             // 
             this.InfoToolStripMenuItem1.Name = "InfoToolStripMenuItem1";
-            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.InfoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.InfoToolStripMenuItem1.Text = "Справка";
+            this.InfoToolStripMenuItem1.Click += new System.EventHandler(this.InfoToolStripMenuItem1_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "Вихід";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
@@ -298,8 +301,8 @@
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;

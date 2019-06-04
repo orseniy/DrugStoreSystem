@@ -14,7 +14,7 @@ namespace DrugStoreSystem
 
     public partial class LoginForm : Form
     {
-        private const string access = @"admin";
+        
         private const string connaccess = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|DrugStoreSystem.mdf;Integrated Security=True";
 
 
@@ -40,15 +40,22 @@ namespace DrugStoreSystem
                     if (reader.HasRows)
                     {
                         reader.Read();
+                        MessageBox.Show(reader.GetValue(3).ToString());
 
                         if (reader.GetValue(3).ToString() == "admin")
                         {
-                            MessageBox.Show("OK");
-                            FormAdmin objFormAdmin = new FormAdmin();
+                            //MessageBox.Show("OK");
+                            /*FormAdmin objFormAdmin = new FormAdmin();
                             this.Hide();
-                            objFormAdmin.Show();
+                            objFormAdmin.Show();*/
+                            FormUser btnhide = new FormUser();
+                            Hide();
+                            btnhide.button5.Visible = true;
+                            btnhide.button6.Visible = true;
+                            btnhide.Show();
+                            //MessageBox.Show("OK2");
                         }
-
+                        else
                         {
                             FormUser obj = new FormUser();
                             Hide();

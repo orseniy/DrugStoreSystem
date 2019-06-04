@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DrugStoreSystem.DbAccess">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAABAAAgACAABABAAAREAAAAAAAAAAAAAAIE=</HashCode>
+      <FileName>DbAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.DrugForm">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EARAAAAACCAAABAAIAHAAAACARAAAAAAAEQAACAABAA=</HashCode>
+      <FileName>DrugForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.DrugStoreSystemDataSet" Collapsed="true">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACEAAwBAgIJABAAAQAAABAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.FormAdmin" Collapsed="true">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FormAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.FormUser">
+    <Position X="4.5" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQIAAgAggSAQhAAAAgSACAACAIC7dwIgAAAEEQAABAA=</HashCode>
+      <FileName>FormUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.LoginForm">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAIAAAAACAAABAAAACAAAACAAAIAAAABEAAAABAAAA=</HashCode>
+      <FileName>LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.Program" Collapsed="true">
+    <Position X="8" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.UserHide" Collapsed="true">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserHide.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.DrugStoreSystemDataSetTableAdapters.DrugsTableAdapter" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.DrugStoreSystemDataSetTableAdapters.UsersTableAdapter" Collapsed="true">
+    <Position X="6.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.DrugStoreSystemDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAAhABEEBAAAAMAAgAAACgAAAAgQAAAIABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.Models.Drug">
+    <Position X="6.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgCAAAAAQAAAAAAAAAgAASAAAAAAAAAACAAAAEAAQA=</HashCode>
+      <FileName>Models\Drug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.Properties.Resources" Collapsed="true">
+    <Position X="6.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrugStoreSystem.Properties.Settings" Collapsed="true">
+    <Position X="10.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
